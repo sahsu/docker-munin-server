@@ -1,6 +1,6 @@
 server:
   restart: "always"
-  image: "munin-server"
+  image: "sahsu/munin-server"
   ports: 
     - "80"
   links: 
@@ -14,7 +14,7 @@ server:
    - "/var/www/munin"
 munin-node:
   restart: "always"
-  image: "munin-node"
+  image: "sahsu/munin-node"
   environment:
    ALLOW: "cidr_allow 0.0.0.0/0"
   privileged: true
