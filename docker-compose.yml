@@ -1,0 +1,21 @@
+server:
+  restart: "always"
+  image: "munin-server"
+  ports: 
+    - "80"
+  links: 
+    - munin-node
+  environment:
+   NODES: "munin-node:munin-node"
+  volumes:
+   - "/var/lib/munin"
+   - "/var/log/munin"
+   - "/var/cache/munin"
+   - "/var/www/munin"
+munin-node:
+  restart: "always"
+  image: "munin-node"
+  environment:
+   ALLOW: "cidr_allow 0.0.0.0/0"
+  privileged: true
+#  net: "host"
