@@ -1,6 +1,6 @@
 #!/bin/bash
 NODES=${NODES:-}
-
+GROUP=${GROUP:-}
 # generate node list
 cat > /etc/munin/munin.conf << ORIGIN
 includedir /etc/munin/munin-conf.d
@@ -13,7 +13,7 @@ do
     NAME=`echo $NODE | cut -d ':' -f1`
     HOST=`echo $NODE | cut -d ':' -f2`
     cat << EOF >> /etc/munin/munin.conf
-[$NAME]
+[$GROUP$NAME]
     address $HOST
     use_node_name yes
 
