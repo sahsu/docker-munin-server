@@ -1,6 +1,6 @@
 #!/bin/bash
 
-t -z $1 > /dev/null
+test -z $1 > /dev/null
 if [ $? -eq 0  ]; then
     echo 'Usage:
 
