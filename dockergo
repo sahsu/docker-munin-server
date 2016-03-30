@@ -9,6 +9,6 @@ if [ $? -eq 0  ]; then
           exit 0
         fi
 
-GROUP="$3\;"
-cat docker-compose.yml | sed -e "s;munin-node$;$1;g" -e "s;munin-node:$;$1:;g" -e "s;munin-node:munin-node;$1:$1;g" -e "s;PERF;$GROUP;g"  | sed -e "s;\"$1:$1\";\"$1:$1 $2\";g" > q; mv q docker-compose.yml
+echo $GROUP | grep \; || GROUP="$3\;"
+cat docker-compose.yml | sed -e "s;munin-node$;$1;g" -e "s;munin-node:$;$1:;g" -e "s;munin-node:munin-node;$1:$1;g" -e "s;PERF";$GROUP";g"  | sed -e "s;\"$1:$1\";\"$1:$1 $2\";g" > q; mv q docker-compose.yml
 docker-compose rm -f ; docker-compose up  &
