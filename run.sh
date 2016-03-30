@@ -2,6 +2,12 @@
 NODES=${NODES:-}
 
 # generate node list
+cat > /etc/munin.munin.conf << ORIGIN
+includedir /etc/munin/munin-conf.d
+graph_strategy cgi
+html_strategy cgi
+ORIGIN
+
 for NODE in $NODES
 do
     NAME=`echo $NODE | cut -d ':' -f1`
