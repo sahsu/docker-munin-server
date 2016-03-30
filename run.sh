@@ -2,7 +2,7 @@
 NODES=${NODES:-}
 
 # generate node list
-cat > /etc/munin.munin.conf << ORIGIN
+cat > /etc/munin/munin.conf << ORIGIN
 includedir /etc/munin/munin-conf.d
 graph_strategy cgi
 html_strategy cgi
