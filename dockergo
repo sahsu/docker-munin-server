@@ -10,5 +10,4 @@ if [ $? -eq 0  ]; then
         fi
 
 perl -e "s;munin-node$;$1;g" -e "s;munin-node:$;$1:;g" -e "s;munin-node:munin-node;$1:$1;g" docker-compose.yml
-docker-compse restart
-
+docker-compose restart
