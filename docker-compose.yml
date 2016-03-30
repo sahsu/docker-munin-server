@@ -2,7 +2,7 @@ server:
   restart: "always"
   image: "sahsu/docker-munin-server"
   ports: 
-    - "80"
+    - "80:80"
   links: 
     - munin-node
   environment:
