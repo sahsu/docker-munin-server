@@ -1,6 +1,6 @@
 server:
   restart: "always"
-  image: "sahsu/docker-munin-server"
+  image: "sahsu/docker-munin-server:2.0.25"
   ports: 
     - "80:80"
   links: 
