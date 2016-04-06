@@ -13,9 +13,6 @@ apt-get update -y && \
 apt-get install munin -y && \
 apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-#echo "deb http://ppa.launchpad.net/pneu/munin/ubuntu '$(lsb_release -cs)' main" >> /etc/apt/sources.list.d/munin.list && \
-#echo "deb-src http://ppa.launchpad.net/pneu/munin/ubuntu '$(lsb_release -cs)' main" >> /etc/apt/sources.list.d/munin.list  && \
-
 # Configure as cgi.
 RUN sed -i 's/^#graph_strategy cron/graph_strategy cgi/g' /etc/munin/munin.conf 
 RUN sed -i 's/^#html_strategy cron/html_strategy cgi/g' /etc/munin/munin.conf
