@@ -1,15 +1,20 @@
-from ubuntu
+from ubuntu:14.04
 MAINTAINER Sean Hsu <sahsu.mobi@gmail.com>
-
-# most come from https://github.com/jekil/docker-munin-server
 
 # Update
 RUN apt-get update -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y munin cron nginx spawn-fcgi libcgi-fast-perl &&  \
+    apt-get install -y software-properties-common && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y cron nginx spawn-fcgi libcgi-fast-perl &&  \
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
-# 2.99.2
-RUN apt-get install -y wget && wget https://github.com/munin-monitoring/munin/archive/2.999.2.tar.gz && tar -xvf 2.999.2.tgz.gz
 
+# munin 2.0.55
+RUN add-apt-repository -y ppa:pneu/munin && \
+apt-get update -y && \
+apt-get install munin -y && \
+apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+#echo "deb http://ppa.launchpad.net/pneu/munin/ubuntu '$(lsb_release -cs)' main" >> /etc/apt/sources.list.d/munin.list && \
+#echo "deb-src http://ppa.launchpad.net/pneu/munin/ubuntu '$(lsb_release -cs)' main" >> /etc/apt/sources.list.d/munin.list  && \
 
 # Configure as cgi.
 RUN sed -i 's/^#graph_strategy cron/graph_strategy cgi/g' /etc/munin/munin.conf 
