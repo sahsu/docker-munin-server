@@ -10,9 +10,6 @@ server:
    GROUP: "PERF"
   volumes:
    - "/data/var/lib/munin:/var/lib/munin"
-   - "/var/log/munin"
-   - "/data/cache/munin:/var/cache/munin"
-   - "/data/var/www/munin:/var/www/munin"
 munin-node:
   restart: "always"
   image: "sahsu/docker-munin-node"
