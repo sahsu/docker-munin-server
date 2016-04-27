@@ -11,6 +11,7 @@ RUN apt-get update -y && \
 RUN add-apt-repository -y ppa:pneu/munin && \
 apt-get update -y && \
 apt-get install munin -y && \
+apt-get install -y telnet mtr wget dnsutils && \
 apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Configure as cgi.
