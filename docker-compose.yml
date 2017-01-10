@@ -7,7 +7,7 @@ server:
     - munin-node
   environment:
    NODES: "munin-node:munin-node"
-   GROUP: "USW1;"
+   GROUP: "PERF;"
   volumes:
    - "/data/var/lib/munin:/var/lib/munin"
 munin-node:
