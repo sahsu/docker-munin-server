@@ -4,13 +4,13 @@ server:
   ports: 
     - "8080:80"
   links: 
-    - o1
+    - munin-node
   environment:
-   NODES: "o1:o1"
+   NODES: "munin-node:munin-node"
    GROUP: "USW1;"
   volumes:
    - "/data/var/lib/munin:/var/lib/munin"
-o1:
+munin-node:
   restart: "always"
   image: "sahsu/docker-munin-node"
   environment:
