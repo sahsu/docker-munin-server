@@ -1,20 +1,7 @@
 server:
   restart: "always"
   image: "sahsu/docker-munin-server"
-  ports: 
-    - "8080:80"
-  links: 
-    - munin-node
   environment:
-   NODES: "munin-node:munin-node"
-   GROUP: "PERF;"
+   NODES: 'localhost:127.0.0.1'
   volumes:
    - "/data/var/lib/munin:/var/lib/munin"
-munin-node:
-  restart: "always"
-  image: "sahsu/docker-munin-node"
-  environment:
-   ALLOW: "cidr_allow 0.0.0.0/0"
-  privileged: true
-  volumes:
-   - "/data/var/lib/plugins:/var/lib/muninplugins"
