@@ -67,7 +67,7 @@ echo $NODES
 spawn-fcgi -s /var/run/munin/fcgi-graph.sock -U munin -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph
 # spawn in /etc/crontab
 echo '* * * * * root spawn-fcgi -s /var/run/munin/fcgi-graph.sock -U munin -u munin -g munin /usr/lib/munin/cgi/munin-cgi-graph > /dev/null' >> /etc/crontab
-echo '* * * * * root service munin-async status | grep 'is running' > /dev/null || service munin-async restart' >> /etc/crontab
+echo '* * * * * root service munin-async status | grep "is running" > /dev/null || service munin-async restart > /dev/null' >> /etc/crontab
 
 # start nginx
 /usr/sbin/nginx
